@@ -24,10 +24,10 @@ public class ProductService {
     public void addNewProduct(Product product) {
         productRepository.save(product);
     }
+/*
 
-
-    public void findProductId(Product product) {
+    public void findProductId(Long id) {
         productRepository.findById(product.getId());
     }
-
+*/
 }

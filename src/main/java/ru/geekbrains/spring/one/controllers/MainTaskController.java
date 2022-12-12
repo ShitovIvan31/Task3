@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/products")
 public class MainTaskController {
     private final ProductService productService;
 
@@ -20,27 +20,28 @@ public class MainTaskController {
         this.productService = productService;
     }
 
-    @GetMapping("/index")
+    @GetMapping("/all")
     public String getAllProductsList(Model model){
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        return "index";
+        return "products";
     }
 
     @GetMapping("/")
     public String redirectFromRoot(Model model){
-        return "redirect:/index";
+        return "redirect:/products/all";
     }
 
     @GetMapping("/addproduct")
-    public String showNewProductForm(Product product){
-        return "add-product";
+    public String showNewProductForm(Model model){
+        return "create_product_form";
     }
 
-    @PostMapping("/addproduct")
-    public String addNewProduct(Product product){
+    @PostMapping("/create")
+    public String addNewProduct(@RequestParam Long id, @RequestParam String name, @RequestParam int price){
+        Product product = new Product(id,name,price);
         productService.addNewProduct(product);
-        return "redirect:/index";
+        return "redirect:/products/all";
     }
 
 

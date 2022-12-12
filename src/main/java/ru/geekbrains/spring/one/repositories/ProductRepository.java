@@ -1,9 +1,9 @@
 package ru.geekbrains.spring.one.repositories;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import ru.geekbrains.spring.one.model.Product;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,12 +30,12 @@ public class ProductRepository {
         products.add(product);
     }
 
-    public void findById(Long id) {
-        for (Product p : products) {
-            if (p.getId().equals(id)) {
-                return;
-            }
-        }
-    }
+//    public void findById(Long id) {
+//        for (Product p : products) {
+//            if (p.getId().equals(id)) {
+//                return;
+//            }
+//        }
+//    }
 
 }
