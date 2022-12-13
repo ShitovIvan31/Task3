@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.spring.one.services.ProductService;
 import ru.geekbrains.spring.one.model.Product;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -35,6 +37,15 @@ public class MainTaskController {
     @GetMapping("/addproduct")
     public String showNewProductForm(Model model){
         return "create_product_form";
+    }
+
+    @GetMapping ({"/{id}"})
+    public String showProductInfo(@PathParam(value = "id") Long id, Model model) {
+        Optional<Product> product = ProductService.findById(id);
+        if (product.isPresent()) {
+            model.addAttribute("product", product.get());
+        }
+        return "product_info";
     }
 
     @PostMapping("/create")

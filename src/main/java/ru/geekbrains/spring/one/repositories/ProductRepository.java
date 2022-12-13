@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductRepository {
@@ -30,12 +31,14 @@ public class ProductRepository {
         products.add(product);
     }
 
-//    public void findById(Long id) {
-//        for (Product p : products) {
-//            if (p.getId().equals(id)) {
-//                return;
-//            }
-//        }
-//    }
+
+    public Optional<Product> findById(Long id) {
+        for (Product p : products) {
+            if (p.getId().equals(id)) {
+                return Optional.of(p);
+            }
+        }
+        return Optional.empty();
+    }
 
 }
