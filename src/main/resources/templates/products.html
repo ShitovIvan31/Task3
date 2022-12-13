@@ -24,7 +24,8 @@
             <tr th:each="p : ${products}">
                 <td th:text="${p.id}"></td>
                 <td th:text="${p.name}"></td>
-                <td th:text="${p.score}"></td>
+                <td th:text="${p.price}"></td>
+                <td><a class="btn btn-danger btn-sm btn-block" role="button" th:href="@{/delete/{id}(id=${product.id})}">Удалить</a></td>
             </tr>
             </tbody>
         </table>

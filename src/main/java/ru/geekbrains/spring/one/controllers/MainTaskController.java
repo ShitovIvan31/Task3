@@ -3,6 +3,7 @@ package ru.geekbrains.spring.one.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.spring.one.services.ProductService;
 import ru.geekbrains.spring.one.model.Product;
@@ -40,12 +41,23 @@ public class MainTaskController {
     }
 
     @GetMapping ({"/{id}"})
-    public String showProductInfo(@PathParam(value = "id") Long id, Model model) {
-        Optional<Product> product = ProductService.findById(id);
+    public String showProductInfo(@PathVariable(name = "id") Long id, Model model) {
+        Optional<Product> product = productService.findById(id);
         if (product.isPresent()) {
             model.addAttribute("product", product.get());
         }
         return "product_info";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+        try{
+            productService.deleteProduct(id);
+        }catch (IllegalArgumentException ex){
+            model.addAttribute("msgError", ex.getMessage());
+            return "error";
+        }
+        return "redirect:/product";
     }
 
     @PostMapping("/create")

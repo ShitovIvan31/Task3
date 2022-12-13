@@ -21,12 +21,12 @@ public class Product {
         this.name = name;
     }
 
-    public int getScore() {
+    public int getPrice() {
         return price;
     }
 
-    public void setScore(int score) {
-        this.price = score;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 

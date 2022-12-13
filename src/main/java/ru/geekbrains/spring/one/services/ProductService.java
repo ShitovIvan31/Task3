@@ -30,6 +30,11 @@ public class ProductService {
     }
 
 
+    public void deleteProduct(Long id) {
+        Optional<Product> prod = productRepository.findById(id);
+        productRepository.delete(prod);
+    }
+
     public final Optional<Product> findById(Long id) {
         return productRepository.findById(id);
     }
