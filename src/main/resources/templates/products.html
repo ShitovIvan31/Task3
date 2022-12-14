@@ -21,14 +21,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="p : ${products}">
-                <td th:text="${p.id}"></td>
-                <td th:text="${p.name}"></td>
-                <td th:text="${p.price}"></td>
-<!--                <td><a class="btn btn-danger btn-sm btn-block" role="button" th:href="@{/delete/{id}(id=${products.id})}">Удалить</a></td>-->
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td><a class="btn btn-danger btn-sm btn-block" role="button" th:href="@{/delete/{id}(id=${product.id})}">Удалить</a></td>
             </tr>
             </tbody>
         </table>
+    </div>
+    <div>
+        <p><a class="btn btn-primary" role="button" th:href="@{/products/addproduct}">Добавить продукт</a></p>
     </div>
 </body>
 </html>

@@ -50,14 +50,14 @@ public class MainTaskController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteProductById(@PathVariable("id") long id, Model model) {
+    public String deleteProductById(@PathVariable("id") Long id, Model model) {
         try {
             productService.deleteProduct(id);
         } catch (IllegalArgumentException ex) {
             model.addAttribute("msgError", ex.getMessage());
             return "error";
         }
-        return "redirect:/product";
+        return "redirect:/products/all";
     }
 
     @PostMapping("/create")
