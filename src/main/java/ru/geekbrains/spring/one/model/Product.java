@@ -1,6 +1,8 @@
 package ru.geekbrains.spring.one.model;
 
+
 public class Product {
+
     private Long id;
     private String name;
     private int price;

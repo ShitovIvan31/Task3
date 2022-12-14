@@ -19,7 +19,7 @@ public class ProductService {
 
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return (List<Product>) productRepository.findAll();
     }
 
 
@@ -30,10 +30,11 @@ public class ProductService {
     }
 
 
-    public void deleteProduct(Long id) {
-        Optional<Product> prod = productRepository.findById(id);
-        productRepository.delete(prod);
-    }
+//    public void deleteProduct(Long id) {
+//        Product prod = productRepository.findById(id)
+//                .orElseThrow(() -> new IllegalArgumentException("Неизвестный номер продукта: " + id));
+//        productRepository.delete(prod);
+//    }
 
     public final Optional<Product> findById(Long id) {
         return productRepository.findById(id);

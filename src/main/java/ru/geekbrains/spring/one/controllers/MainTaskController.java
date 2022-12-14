@@ -49,16 +49,16 @@ public class MainTaskController {
         return "product_info";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) {
-        try{
-            productService.deleteProduct(id);
-        }catch (IllegalArgumentException ex){
-            model.addAttribute("msgError", ex.getMessage());
-            return "error";
-        }
-        return "redirect:/product";
-    }
+//    @GetMapping("/delete/{id}")
+//    public String deleteProductById(@PathVariable("id") long id, Model model) {
+//        try{
+//            productService.deleteProduct(id);
+//        }catch (IllegalArgumentException ex){
+//            model.addAttribute("msgError", ex.getMessage());
+//            return "error";
+//        }
+//        return "redirect:/product";
+//    }
 
     @PostMapping("/create")
     public String addNewProduct(@RequestParam Long id, @RequestParam String name, @RequestParam int price){
