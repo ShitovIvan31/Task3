@@ -1,8 +1,14 @@
 package ru.geekbrains.spring.one.model;
 
+import lombok.Data;
+import org.springframework.data.annotation.Id;
 
+
+//@Data
+//@Entity
 public class Product {
-
+//@Id
+//@GeneratedValue
     private Long id;
     private String name;
     private int price;
