@@ -18,14 +18,19 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<flyway.user>databaseUser</flyway.user>
-		<flyway.password>databasePassword</flyway.password>
-		<flyway.schemas>schemaName</flyway.schemas>
+		<flyway.user>postgres</flyway.user>
+		<flyway.password>Yumcake31_!</flyway.password>
+		<flyway.schemas>public</flyway.schemas>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,13 +41,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.1.214</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -52,7 +50,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -62,10 +59,10 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>4.0.3</version>
 				<configuration>
-					<user>databaseUser</user>
-					<password>databasePassword</password>
+					<user>postgres</user>
+					<password>Yumcake31_!</password>
 					<schemas>
-						<schema>schemaName</schema>
+						<schema>public</schema>
 					</schemas>
 				</configuration>
 			</plugin>

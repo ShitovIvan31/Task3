@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.one.repositories;
+package ru.geekbrains.spring.one.repository;
 
 
 import org.springframework.data.repository.CrudRepository;

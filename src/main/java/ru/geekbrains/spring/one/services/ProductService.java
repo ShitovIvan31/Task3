@@ -3,7 +3,7 @@ package ru.geekbrains.spring.one.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.spring.one.model.Product;
-import ru.geekbrains.spring.one.repositories.ProductRepository;
+import ru.geekbrains.spring.one.repository.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,11 +30,11 @@ public class ProductService {
     }
 
 
-//    public void deleteProduct(Long id) {
-//        Product prod = productRepository.findById(id)
-//                .orElseThrow(() -> new IllegalArgumentException("Неизвестный номер продукта: " + id));
-//        productRepository.delete(prod);
-//    }
+    public void deleteProduct(Long id) {
+        Product prod = productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Неизвестный номер продукта: " + id));
+        productRepository.delete(prod);
+    }
 
     public final Optional<Product> findById(Long id) {
         return productRepository.findById(id);

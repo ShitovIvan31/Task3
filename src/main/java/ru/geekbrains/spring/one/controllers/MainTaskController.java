@@ -24,23 +24,23 @@ public class MainTaskController {
     }
 
     @GetMapping("/all")
-    public String getAllProductsList(Model model){
+    public String getAllProductsList(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         return "products";
     }
 
     @GetMapping("/")
-    public String redirectFromRoot(Model model){
+    public String redirectFromRoot(Model model) {
         return "redirect:/products/all";
     }
 
     @GetMapping("/addproduct")
-    public String showNewProductForm(Model model){
+    public String showNewProductForm(Model model) {
         return "create_product_form";
     }
 
-    @GetMapping ({"/{id}"})
+    @GetMapping({"/{id}"})
     public String showProductInfo(@PathVariable(name = "id") Long id, Model model) {
         Optional<Product> product = productService.findById(id);
         if (product.isPresent()) {
@@ -49,20 +49,20 @@ public class MainTaskController {
         return "product_info";
     }
 
-//    @GetMapping("/delete/{id}")
-//    public String deleteProductById(@PathVariable("id") long id, Model model) {
-//        try{
-//            productService.deleteProduct(id);
-//        }catch (IllegalArgumentException ex){
-//            model.addAttribute("msgError", ex.getMessage());
-//            return "error";
-//        }
-//        return "redirect:/product";
-//    }
+    @GetMapping("/delete/{id}")
+    public String deleteProductById(@PathVariable("id") long id, Model model) {
+        try {
+            productService.deleteProduct(id);
+        } catch (IllegalArgumentException ex) {
+            model.addAttribute("msgError", ex.getMessage());
+            return "error";
+        }
+        return "redirect:/product";
+    }
 
     @PostMapping("/create")
-    public String addNewProduct(@RequestParam Long id, @RequestParam String name, @RequestParam int price){
-        Product product = new Product(id,name,price);
+    public String addNewProduct(@RequestParam Long id, @RequestParam String name, @RequestParam int price) {
+        Product product = new Product(name, price);
         productService.addNewProduct(product);
         return "redirect:/products/all";
     }
