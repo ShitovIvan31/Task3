@@ -50,7 +50,7 @@ public class MainTaskController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteProductById(@PathVariable("id") Long id, Model model) {
+    public String deleteProductById(@PathVariable(name = "id") Long id, Model model) {
         try {
             productService.deleteProduct(id);
         } catch (IllegalArgumentException ex) {
