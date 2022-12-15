@@ -23,6 +23,8 @@ public class ProductService {
     }
 
 
+
+
     public void addNewProduct(Product product) {
         productRepository.save(product);
     }
@@ -30,7 +32,7 @@ public class ProductService {
 
     public void deleteProduct(Long id) {
         Product prod = productRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Неизвестный номер продукта: " + id));
         productRepository.delete(prod);
     }
 
